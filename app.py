@@ -7,8 +7,9 @@ import openai
 import toml
 
 # Load secrets from toml file for OpenAI API
-secrets = toml.load('secrets.toml')
-openai.api_key = secrets['openai']['api_key']
+api_key = st.secrets["OPEN_AI_KEY"]
+
+openai.api_key = api_key
 
 
 
@@ -76,13 +77,13 @@ def extract_toc_and_sections(pdf_path, expand_pages=5):
 def perform_audit(iosa_checklist, input_text):
     model_id = 'gpt-4o'  
     # Load the secrets from the toml file
-    secrets = toml.load('secrets.toml')
+    api_key = st.secrets["OPEN_AI_KEY"]
 
     # Create the OpenAI client using the API key from secrets.toml
-    client = openai.OpenAI(api_key=secrets['openai']['api_key'])
+    openai.api_key = api_key
 
     # OpenAI API request
-    response = client.chat.completions.create(
+    response = openai.chat.completions.create(
         model=model_id,
         messages=[
             {
@@ -137,13 +138,13 @@ def extract_section_with_gpt(section_name, chunk_text):
     model_id = 'gpt-4o'
 
     # Load the secrets from the toml file
-    secrets = toml.load('secrets.toml')
+    api_key = st.secrets["OPEN_AI_KEY"]
 
     # Create the OpenAI client using the API key from secrets.toml
-    client = openai.OpenAI(api_key=secrets['openai']['api_key'])
+    openai.api_key = api_key
 
     # OpenAI API request
-    response = client.chat.completions.create(
+    response = openai.chat.completions.create(
         model=model_id,
         messages=[
             {
