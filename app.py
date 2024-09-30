@@ -113,7 +113,7 @@ def extract_section_with_gpt(section_name, chunk_text):
 
 # Streamlit app
 def main():
-    st.title("AeroSync Manual Parser")
+    st.title("AeroSync Manual Parser ")
     
     # Upload the PDF
     uploaded_file = st.file_uploader("Upload PDF", type="pdf")
