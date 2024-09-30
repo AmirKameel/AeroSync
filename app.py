@@ -85,7 +85,9 @@ def extract_section_with_gpt(section_name, chunk_text):
                 'content': (
                     """
     Context:
-    You are tasked with extracting sections from a document. Your focus is on finding specific sections based on their header names and extracting only the relevant portion. Ignore any unrelated text that appears before or after the specified section.And pay attention that when you select a parent branch you select all the children texts of it and if it is a child not have subchildren extract it only.
+    You are tasked with extracting sections from a document. Your focus is on finding specific sections based on their header names and extracting only the relevant portion. Ignore any unrelated text that appears before or after the specified section.And pay attention that when you select a parent branch you select all the children texts of it and if it is a child not have subchildren extract it only. And if you found a pattern that is repeated in each page its a footer remove it too like for example you found Copyright Jetstar Pacific Issue 2.1 0-9 
+Quality Manual 5/01/2017 and some contnets and found Copyright Jetstar Pacific Issue 2.1 0-9 
+Quality Manual 5/01/2017 then remove this pattern from all pages
                     """
                 )
             },
