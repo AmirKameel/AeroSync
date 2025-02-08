@@ -38,7 +38,7 @@ def extract_toc_and_sections(pdf_path, expand_pages=7):
     
     # Function to detect section headers like "ORG 1.1.1", "ORG 2.3.4", etc.
     def find_section_headers(page_text):
-        pattern = r'\b(ORG \d+(\.\d+){1,5})\b'  # Matches patterns like ORG 1.1, ORG 2.1.1, etc.
+        pattern =  r'^\b((ORG|FLT|DSP|MNT|CAB|GRH|CGO|SEC) \d+(\.\d+)*)\b'  # Matches patterns like ORG 1.1, ORG 2.1.1, etc.
         headers = re.findall(pattern, page_text)
         return [header[0] for header in headers]
 
