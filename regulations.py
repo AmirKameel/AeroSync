@@ -136,10 +136,13 @@ def extract_section_with_gpt(section_name, chunk_text):
     """Extract specific section using GPT."""
     model_id = 'gpt-3.5-turbo'
 
-    secrets = toml.load('secrets.toml')
-    client = openai.OpenAI(api_key=secrets['openai']['api_key'])
+    # Load the secrets from the toml file
+    api_key = st.secrets["OPEN_AI_KEY"]
 
-    response = client.chat.completions.create(
+    # Create the OpenAI client using the API key from secrets.toml
+    openai.api_key = api_key
+
+    response = openai.chat.completions.create(
         model=model_id,
         messages=[
             {
@@ -162,7 +165,7 @@ def extract_section_with_gpt(section_name, chunk_text):
     return response.choices[0].message.content
 
 def main():
-    st.title("Regulations PDF Parser")
+    st.title("AeroSync Regulations Parser")
 
     uploaded_file = st.file_uploader("Upload PDF", type="pdf")
     if uploaded_file:
