@@ -232,7 +232,7 @@ def parse_small_subsections(text):
 
 # Your original main function and GPT integration remain unchanged
 def main():
-    st.title("Enhanced Regulations PDF Parser")
+    st.title("AeroSync Regulations Parser")
 
     uploaded_file = st.file_uploader("Upload PDF", type="pdf")
     if uploaded_file:
